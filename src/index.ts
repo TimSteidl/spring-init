@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { getPackageInfo } from "../src/utils/get-package-info";
-import { init } from "./commands/init";
+import { create } from "./commands/create";
 
 process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));
@@ -15,7 +15,7 @@ async function main() {
       "-v, --version",
       "display the version number",
     );
-  program.addCommand(init);
+  program.addCommand(create);
   program.parse();
 }
 
