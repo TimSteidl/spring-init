@@ -1,5 +1,6 @@
 # Spring init
 
+run with **npx spring-init@latest**
 
 ### Targets:
 
@@ -12,10 +13,8 @@
   - CRUD Operations
   - Jpa Repositories
 
-
 The common destinguishing difference when first building the project is usually just the name of the entity,
 which defines the package name, controller name, service name and repository name.
-
 
 There should be choices as to how far everything should be generated.
 At the time of writing these should be:
@@ -27,7 +26,6 @@ At the time of writing these should be:
 Each of these can be easily templated and generated without much effort.
 
 Crud operations should also encompass the dependency injection.
-
 
 At a later stage crud operations should also contain a multipile choice element for which operations should be generated.
 
