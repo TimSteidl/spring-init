@@ -14,12 +14,15 @@
   },
   "scripts": {
     "lint": "eslint",
-    "start": "ts-node src/index.ts create"
+    "build": "ts-node src/index.ts create"
+  },
+  "bin": {
+    "spring-init": "build/index.js create"
   },
   "name": "spring-init",
   "description": "- Automate reocurrances in the initial stage of configuring a spring application\r   This encompasses the generation of:\r   - Packages\r   - Entitys\r   - Controllers\r   - Services\r   - CRUD Operations\r   - Jpa Repositories",
   "version": "1.0.2",
-  "main": "src/index.ts",
+  "main": "build/index.js create",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TimSteidl/spring-init.git"
