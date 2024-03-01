@@ -13,17 +13,18 @@
     "prettier": "^3.2.5"
   },
   "scripts": {
-    "lint": "eslint"
+    "lint": "eslint",
+    "start": "ts-node src/index.ts create"
   },
   "name": "spring-init",
   "description": "- Automate reocurrances in the initial stage of configuring a spring application\r   This encompasses the generation of:\r   - Packages\r   - Entitys\r   - Controllers\r   - Services\r   - CRUD Operations\r   - Jpa Repositories",
-  "version": "1.0.1",
-  "main": "index.ts",
+  "version": "1.0.2",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TimSteidl/spring-init.git"
   },
-  "keywords": ["spring", "initializer"],
+  "keywords": ["spring", "initializer", "java"],
   "author": "Tim Steidl",
   "license": "MIT",
   "bugs": {

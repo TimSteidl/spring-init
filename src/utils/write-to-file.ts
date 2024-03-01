@@ -1,12 +1,12 @@
 import fs from "fs";
-import { createBaseController } from "./templates/base/controller";
-import { createBaseService } from "./templates/base/service";
-import { createServiceTemplate } from "./templates/injected/injectedService";
-import { createControllerTemplate } from "./templates/injected/injectedController";
-import { createCrudService } from "./templates/crud/crudService";
-import { createCrudController } from "./templates/crud/crudController";
-import { createEntityTemplate } from "./templates/base/entity";
-import { createRepositoryTemplate } from "./templates/base/repository";
+import { createEntityTemplate } from "../templates/base/entity";
+import { createBaseService } from "../templates/base/service";
+import { createCrudController } from "../templates/crud/crudController";
+import { createCrudService } from "../templates/crud/crudService";
+import { createControllerTemplate } from "../templates/injected/injectedController";
+import { createServiceTemplate } from "../templates/injected/injectedService";
+import { createBaseController } from "../templates/base/controller";
+import { createRepositoryTemplate } from "../templates/base/repository";
 
 export function createBaseClasses(entity: string) {
   fs.writeFileSync(

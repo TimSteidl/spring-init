@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import { getPackageInfo } from "../src/utils/get-package-info";
 import { create } from "./commands/create";
+import { getPackageInfo } from "./utils/get-package-info";
 
 process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));
