@@ -1,7 +1,7 @@
 export function getPackageInfo() {
   return {
     name: "spring-init",
-    version: "1.0.2",
+    version: "1.2.7",
     description: "Spring Boot Generator",
     main: "index.ts",
     scripts: {

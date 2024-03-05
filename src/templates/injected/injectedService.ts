@@ -1,6 +1,12 @@
-export function createServiceTemplate(entityName: string) {
+export function createServiceTemplate(entityName: string, packagePath: string) {
   const lowercaseEntityName = entityName.toLowerCase();
   return (
+    "package " +
+    packagePath +
+    "." +
+    entityName.toLowerCase() +
+    ";\n" +
+    "\n" +
     "import org.springframework.stereotype.Service;\n" +
     "\n" +
     "@Service\n" +

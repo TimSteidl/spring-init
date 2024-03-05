@@ -1,7 +1,17 @@
-export function createControllerTemplate(entityName: string) {
+export function createControllerTemplate(
+  entityName: string,
+  packagePath: string,
+) {
   const lowercaseEntityName = entityName.toString().toLowerCase();
   return (
+    "package " +
+    packagePath +
+    "." +
+    entityName.toLowerCase() +
+    ";\n" +
+    "\n" +
     "import org.springframework.web.bind.annotation.RestController;\n" +
+    "import org.springframework.web.bind.annotation.RequestMapping;\n" +
     "\n" +
     "@RestController\n" +
     '@RequestMapping("/api/' +

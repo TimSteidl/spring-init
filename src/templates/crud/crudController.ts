@@ -1,6 +1,12 @@
-export function createCrudController(entityName: string) {
+export function createCrudController(entityName: string, packagePath: string) {
   const lowercaseEntityName = entityName.toLowerCase();
   return (
+    "package " +
+    packagePath +
+    "." +
+    entityName.toLowerCase() +
+    ";\n" +
+    "\n" +
     "import org.springframework.web.bind.annotation.*;\n" +
     "\n" +
     "import java.util.List;" +
@@ -46,12 +52,12 @@ export function createCrudController(entityName: string) {
     "s();\n" +
     "    }\n" +
     "    \n" +
-    "    @GetMapping({id})\n" +
+    '    @GetMapping("?id=")\n' +
     "    public " +
     entityName +
     " get" +
     entityName +
-    "ById(@PathVariable Long id) {\n" +
+    "ById(@RequestParam Long id) {\n" +
     "        return " +
     lowercaseEntityName +
     "Service.get" +
@@ -101,16 +107,16 @@ export function createCrudController(entityName: string) {
     "    public void delete" +
     entityName +
     "(@RequestBody " +
-    entityName +
+    "Long" +
     " " +
-    lowercaseEntityName +
+    "id" +
     ") {\n" +
     "        " +
     lowercaseEntityName +
     "Service.delete" +
     entityName +
     "(" +
-    lowercaseEntityName +
+    "id" +
     ");\n" +
     "    }\n" +
     "}"

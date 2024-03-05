@@ -1,6 +1,12 @@
-export function createCrudService(entityName: string) {
+export function createCrudService(entityName: string, packagePath: string) {
   const lowercaseEntityName = entityName.toLowerCase();
   return (
+    "package " +
+    packagePath +
+    "." +
+    entityName.toLowerCase() +
+    ";\n" +
+    "\n" +
     "import org.springframework.stereotype.Service;\n" +
     "\n" +
     "import java.util.List;\n" +

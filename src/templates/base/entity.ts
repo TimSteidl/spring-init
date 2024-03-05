@@ -1,9 +1,15 @@
-export function createEntityTemplate(entityName: string) {
+export function createEntityTemplate(entityName: string, packagePath: string) {
   return (
-    "import javax.persistence.Entity;\n" +
-    "import javax.persistence.GeneratedValue;\n" +
-    "import javax.persistence.GenerationType;\n" +
-    "import javax.persistence.Id;\n\n" +
+    "package " +
+    packagePath +
+    "." +
+    entityName.toLowerCase() +
+    ";\n" +
+    "\n" +
+    "import jakarta.persistence.Entity;\n" +
+    "import jakarta.persistence.GeneratedValue;\n" +
+    "import jakarta.persistence.GenerationType;\n" +
+    "import jakarta.persistence.Id;\n\n" +
     "@Entity\n" +
     "public class " +
     entityName +

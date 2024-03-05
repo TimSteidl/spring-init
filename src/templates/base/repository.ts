@@ -1,5 +1,14 @@
-export function createRepositoryTemplate(entityName: string) {
+export function createRepositoryTemplate(
+  entityName: string,
+  packagePath: string,
+) {
   return (
+    "package " +
+    packagePath +
+    "." +
+    entityName.toLowerCase() +
+    ";\n" +
+    "\n" +
     "import org.springframework.data.jpa.repository.JpaRepository;\n\n" +
     "public interface " +
     entityName +
