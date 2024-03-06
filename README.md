@@ -4,8 +4,12 @@ run with **npx spring-init@latest** + options
 
 ### Options:
 
-create - start the initialisation process
+**create** - start the initialisation process
 Current options under create: - Class only - Dependency injection - Crud operations
+
+#### For the Crud operations you can now also choose which endpoints to generate:
+
+GET, GET-BY-ID, POST, PUT, DELETE
 
 ### Targets:
 
@@ -20,17 +24,3 @@ Current options under create: - Class only - Dependency injection - Crud operati
 
 The common destinguishing difference when first building the project is usually just the name of the entity,
 which defines the package name, controller name, service name and repository name.
-
-At a later stage crud operations should also contain a multipile choice element for which operations should be generated.
-
-An example for post choice:
-
-[ ] Generate all?
-
-[ ] Generate get endpoint?
-
-[ ] Generate post endpoint?
-
-[ ] Generate put endpoint?
-
-[ ] Generate delete endpoint?

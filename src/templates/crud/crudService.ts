@@ -1,5 +1,24 @@
-export function createCrudService(entityName: string, packagePath: string) {
+export function createCrudService(
+  entityName: string,
+  packagePath: string,
+  chosenEndpoints: string[],
+) {
   const lowercaseEntityName = entityName.toLowerCase();
+  const getEndpoint = chosenEndpoints.includes("GET")
+    ? serviceGetEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const getByIdEndpoint = chosenEndpoints.includes("GET-BY-ID")
+    ? serviceGetByIdEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const postEndpoint = chosenEndpoints.includes("POST")
+    ? servicePostEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const putEndpoint = chosenEndpoints.includes("PUT")
+    ? servicePutEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const deleteEndpoint = chosenEndpoints.includes("DELETE")
+    ? serviceDeleteEndpoint(entityName, lowercaseEntityName)
+    : "";
   return (
     "package " +
     packagePath +
@@ -36,6 +55,21 @@ export function createCrudService(entityName: string, packagePath: string) {
     "Repository;\n" +
     "    }\n" +
     "    \n" +
+    getEndpoint +
+    "\n" +
+    getByIdEndpoint +
+    "\n" +
+    postEndpoint +
+    "\n" +
+    putEndpoint +
+    "\n" +
+    deleteEndpoint +
+    "}\n"
+  );
+}
+
+function serviceGetEndpoint(entityName: string, lowercaseEntityName: string) {
+  return (
     "    public List<" +
     entityName +
     "> getAll" +
@@ -44,18 +78,12 @@ export function createCrudService(entityName: string, packagePath: string) {
     "        return " +
     lowercaseEntityName +
     "Repository.findAll();\n" +
-    "    }\n" +
-    "\n" +
-    "    public " +
-    entityName +
-    " get" +
-    entityName +
-    "ById(Long id) {\
-                \n        return " +
-    lowercaseEntityName +
-    "Repository.findById(id).orElse(null);\
-                \n    }\n" +
-    "\n" +
+    "    }\n"
+  );
+}
+
+function servicePostEndpoint(entityName: string, lowercaseEntityName: string) {
+  return (
     "    public " +
     entityName +
     " create" +
@@ -64,14 +92,18 @@ export function createCrudService(entityName: string, packagePath: string) {
     entityName +
     " " +
     lowercaseEntityName +
-    ") {\
-                \n        return " +
+    ") {\n" +
+    "        return " +
     lowercaseEntityName +
     "Repository.save(" +
     lowercaseEntityName +
-    ");\
-                \n    }\n" +
-    "\n" +
+    ");\n" +
+    "    }\n"
+  );
+}
+
+function servicePutEndpoint(entityName: string, lowercaseEntityName: string) {
+  return (
     "    public " +
     entityName +
     " update" +
@@ -80,21 +112,44 @@ export function createCrudService(entityName: string, packagePath: string) {
     entityName +
     " " +
     lowercaseEntityName +
-    ") {\
-                \n        return " +
+    ") {\n" +
+    "        return " +
     lowercaseEntityName +
     "Repository.save(" +
     lowercaseEntityName +
-    ");\
-                \n    }\n" +
-    "\n" +
+    ");\n" +
+    "    }\n"
+  );
+}
+
+function serviceGetByIdEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
+    "    public " +
+    entityName +
+    " get" +
+    entityName +
+    "ById(Long id) {\n" +
+    "        return " +
+    lowercaseEntityName +
+    "Repository.findById(id).orElse(null);\n" +
+    "    }\n"
+  );
+}
+
+function serviceDeleteEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
     "    public void delete" +
     entityName +
-    "(Long id) {\
-                \n        " +
+    "(Long id) {\n" +
+    "        " +
     lowercaseEntityName +
-    "Repository.deleteById(id);\
-                \n    }\n" +
-    "}"
+    "Repository.deleteById(id);\n" +
+    "    }\n"
   );
 }

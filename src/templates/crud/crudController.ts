@@ -1,5 +1,24 @@
-export function createCrudController(entityName: string, packagePath: string) {
+export function createCrudController(
+  entityName: string,
+  packagePath: string,
+  chosenEndpoints: string[],
+) {
   const lowercaseEntityName = entityName.toLowerCase();
+  const getEndpoint = chosenEndpoints.includes("GET")
+    ? controllerGetEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const getByIdEndpoint = chosenEndpoints.includes("GET-BY-ID")
+    ? controllerGetByIdEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const postEndpoint = chosenEndpoints.includes("POST")
+    ? controllerPostEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const putEndpoint = chosenEndpoints.includes("PUT")
+    ? controllerPutEndpoint(entityName, lowercaseEntityName)
+    : "";
+  const deleteEndpoint = chosenEndpoints.includes("DELETE")
+    ? controllerDeleteEndpoint(entityName, lowercaseEntityName)
+    : "";
   return (
     "package " +
     packagePath +
@@ -39,6 +58,24 @@ export function createCrudController(entityName: string, packagePath: string) {
     "Service;\n" +
     "    }\n" +
     "    \n" +
+    getEndpoint +
+    "    \n" +
+    getByIdEndpoint +
+    "    \n" +
+    postEndpoint +
+    "    \n" +
+    putEndpoint +
+    "    \n" +
+    deleteEndpoint +
+    "}\n"
+  );
+}
+
+function controllerGetEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
     "    @GetMapping\n" +
     "    public List<" +
     entityName +
@@ -50,8 +87,15 @@ export function createCrudController(entityName: string, packagePath: string) {
     "Service.getAll" +
     entityName +
     "s();\n" +
-    "    }\n" +
-    "    \n" +
+    "    }\n"
+  );
+}
+
+function controllerGetByIdEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
     '    @GetMapping("?id=")\n' +
     "    public " +
     entityName +
@@ -63,8 +107,15 @@ export function createCrudController(entityName: string, packagePath: string) {
     "Service.get" +
     entityName +
     "ById(id);\n" +
-    "    }\n" +
-    "    \n" +
+    "    }\n"
+  );
+}
+
+function controllerPostEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
     "    @PostMapping\n" +
     "    public " +
     entityName +
@@ -82,8 +133,15 @@ export function createCrudController(entityName: string, packagePath: string) {
     "(" +
     lowercaseEntityName +
     ");\n" +
-    "    }\n" +
-    "    \n" +
+    "    }\n"
+  );
+}
+
+function controllerPutEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
     "    @PutMapping\n" +
     "    public " +
     entityName +
@@ -101,8 +159,15 @@ export function createCrudController(entityName: string, packagePath: string) {
     "(" +
     lowercaseEntityName +
     ");\n" +
-    "    }\n" +
-    "    \n" +
+    "    }\n"
+  );
+}
+
+function controllerDeleteEndpoint(
+  entityName: string,
+  lowercaseEntityName: string,
+) {
+  return (
     "    @DeleteMapping\n" +
     "    public void delete" +
     entityName +
@@ -118,7 +183,6 @@ export function createCrudController(entityName: string, packagePath: string) {
     "(" +
     "id" +
     ");\n" +
-    "    }\n" +
-    "}"
+    "    }\n"
   );
 }
