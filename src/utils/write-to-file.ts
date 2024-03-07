@@ -1,13 +1,14 @@
 import * as fs from "fs";
-import { createEntityTemplate } from "../templates/base/entity";
-import { createBaseService } from "../templates/base/service";
-import { createCrudController } from "../templates/crud/crudController";
-import { createCrudService } from "../templates/crud/crudService";
-import { createControllerTemplate } from "../templates/injected/injectedController";
-import { createServiceTemplate } from "../templates/injected/injectedService";
-import { createBaseController } from "../templates/base/controller";
-import { createRepositoryTemplate } from "../templates/base/repository";
+import { createEntityTemplate } from "../templates/base/entity.js";
+import { createBaseService } from "../templates/base/service.js";
+import { createCrudController } from "../templates/crud/crudController.js";
+import { createCrudService } from "../templates/crud/crudService.js";
+import { createControllerTemplate } from "../templates/injected/injectedController.js";
+import { createServiceTemplate } from "../templates/injected/injectedService.js";
+import { createBaseController } from "../templates/base/controller.js";
+import { createRepositoryTemplate } from "../templates/base/repository.js";
 import chalk from "chalk";
+
 
 export function createBaseClasses(entity: string, packagePath: string) {
   fs.writeFileSync(
